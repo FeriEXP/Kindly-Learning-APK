@@ -57,8 +57,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void injectAlfaSmartAnswer(WebView view) {
-        String js = "javascript:(function(){" +
+        String js = "(function(){" +
                 "if(document.getElementById('kindly-alfa-panel')) return;" +
                 "var s = document.createElement('script');" +
                 "s.src = 'https://kindly-learning.vercel.app/alfa-connector.user.js?t=' + Date.now();" +
                 "document.body.appendChild(s);" +
+                "})();";
+
+        view.evaluateJavascript(js, null);
+    }
+}
